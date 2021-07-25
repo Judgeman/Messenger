@@ -35,14 +35,29 @@ function disconnect() {
 
 function sendMessage() {
     if (stompClient == null) {
-        $("#messages").append("<tr><td>Verbindung nicht aufgebaut!</td></tr>");
+        $("#messages").append("<tr><td colspan='2'>Verbindung nicht aufgebaut!</td></tr>");
         return;
     }
     stompClient.send("/app/messages", {}, JSON.stringify({'name': $("#name").val(), 'text': $("#message").val()}));
 }
 
 function addNewMessage(name, message) {
-    $("#messages").append("<tr><td>" + name + " schrieb: " + message + "</td></tr>");
+    $("#messages").append("<tr><td>" + name + ": </td><td>" + message + "</td></tr>");
+}
+
+function loadAllMessages() {
+    if (stompClient == null) {
+       $("#messages").append("<tr><td colspan='2'>Verbindung nicht aufgebaut!</td></tr>");
+       return;
+    }
+
+    $.get( "/messages/all", function(messages) {
+        $("#messages").html("");
+
+        for (const message of messages) {
+            addNewMessage(message.name, message.text);
+        }
+    });
 }
 
 $(function () {
@@ -52,4 +67,5 @@ $(function () {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendMessage(); });
+    $( "#loadAll" ).click(function() { loadAllMessages(); });
 });

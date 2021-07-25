@@ -9,11 +9,10 @@
     <style type="text/css"><!-- @import"/css/style.css"; --></style>
     <!--<link href="/css/style.css" rel="stylesheet" type="text/css">-->
 
-    <script src="/javascript/jquery-3.6.0.slim.min.js"></script>
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
     <script src="/javascript/sockjs-1.4.0.min.js"></script>
     <script src="/javascript/stomp-2.3.3.min.js"></script>
     <script src="/javascript/messenger.js"></script>
-
 </head>
 <body>
 <noscript><div class="noScript">
@@ -59,55 +58,13 @@
     <div class="client">
         <form class="clientForm">
             <input type="text" id="message" class="formInput" placeholder="Nachricht schreiben">
-            <button type="submit" id="send" class="sendBtn">Senden</button>
+            <button type="submit" id="send" class="sendBtn">Senden</button><br>
+            <button id="loadAll" class="btn btn-default" type="submit">Alte Nachrichten laden</button>
         </form>
     </div>
 
     </div>
 </div>
-<!--
-<div id="main-content" class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="connect" >WebSocket connection:</label>
-                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
-                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="col-md-6">
-            <form class="form-inline">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" class="form-control" placeholder="Name eintragen">
-                </div>
-                <div class="form-group">
-                    <label for="name">Nachricht:</label>
-                    <input type="text" id="message" class="form-control" placeholder="Nachricht schreiben">
-                </div>
-                <button id="send" class="btn btn-default" type="submit">Abschicken</button>
-            </form>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <table id="conversation" class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Nachrichten</th>
-                </tr>
-                </thead>
-                <tbody id="messages">
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
--->
-
 
 </body>
 </html>
