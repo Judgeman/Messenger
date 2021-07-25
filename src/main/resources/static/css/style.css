@@ -1,0 +1,29 @@
+/*
+*   denn 24.07.2021
+*/
+
+*                   { margin: 0px ; padding: 0px ; }
+.leer1              { height: 1.0em; }
+.leer2              { height: 2.0em; }
+
+.noScript           { width: 40.0em; margin-left: auto; margin-right: auto; border: 1px solid #FF0000; box-sizing: border-box;
+                      padding: 0.8em; color: #FF0000; margin-top: 1.8em; background: #ffe6e6; }
+
+/* home.html
+------------*/
+
+
+
+
+/* onlineClient.html
+----------------------*/
+.container          { width: 40.0em; height: auto; margin-left: auto; margin-right: auto; }
+.clientBox          { border: 1px solid #F5F5F5; }
+.clientKop          { background: #F9F9F9; border-bottom: 1px solid #F5F5F5; }
+.clientForm         { margin: 0px; padding: 0px;}
+.formLabel          { font-size: 1.2em; text-align: center; }
+.formButton td      { box-sizing: border-box; width:49.99999%; }
+.formBtn            { width: 99.99999%; padding:0.5em; }
+.formName           { }
+.formInout          { }
+.sendBtn            { }

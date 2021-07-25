@@ -2,21 +2,76 @@
 <html>
 <head>
     <title>Messenger</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <link href="/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+    <style type="text/css"><!-- @import"/css/style.css"; --></style>
+    <!--<link href="/css/style.css" rel="stylesheet" type="text/css">-->
+
     <script src="/javascript/jquery-3.6.0.slim.min.js"></script>
     <script src="/javascript/sockjs-1.4.0.min.js"></script>
     <script src="/javascript/stomp-2.3.3.min.js"></script>
     <script src="/javascript/messenger.js"></script>
+
 </head>
 <body>
-<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
-    enabled. Please enable
-    Javascript and reload this page!</h2></noscript>
+<noscript><div class="noScript">
+   <h3> Seems your browser doesn't support Javascript!
+    Websocket relies on Javascript being enabled. Please enable
+    Javascript and reload this page!
+   </h3></div></noscript>
+
+<div class="leer2">&#160;</div>
+<div id="main-content" class="container">
+    <div class="clientBox">
+
+        <!-- Kop -->
+    <div class="clientKop">
+        <form class="clientForm">
+            <p class="formLabel">
+                <label for="connect">WebSocked connection</label>
+            </p>
+            <table border="0" width="100%" class="formButton">
+                <tr><td>
+                    <button id="connect" class="formBtn" type="submit">Connect</button>
+                </td><td>
+                     <button id="disconnect" class="formBtn" type="submit" disabled="disabled">Disconnect</button>
+                </td></tr>
+            </table>
+            <p class="formName">
+                <label for="name" class="">Name:</label>
+                <input type="text" id="name" class="formInput" placeholder="Name Eintragen">
+            </p>
+        </form>
+    </div>
+
+      <!-- Text Ausgabe -->
+    <div class="clientMessage">
+        <div class="clientScroll" id="conversation">
+            <ul>
+                <li id="messages"></li>
+            </ul>
+        </div>
+    </div>
+
+     <!-- Text formular und send Button -->
+    <div class="client">
+        <form class="clientForm">
+            <input type="text" id="message" class="formInput" placeholder="Nachricht schreiben">
+            <button type="submit" id="send" class="sendBtn">Senden</button>
+        </form>
+    </div>
+
+    </div>
+</div>
+<!--
 <div id="main-content" class="container">
     <div class="row">
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="connect">WebSocket connection:</label>
+                    <label for="connect" >WebSocket connection:</label>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
                     <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
                     </button>
@@ -51,5 +106,8 @@
         </div>
     </div>
 </div>
+-->
+
+
 </body>
 </html>
