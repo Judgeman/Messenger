@@ -9,7 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
+
+import java.util.List;
 
 /**
  * Created by Paul Richter on Mon 19/07/2021
@@ -32,10 +35,19 @@ public class MessageController {
         Message escapedMessage = new Message(HtmlUtils.htmlEscape(message.getName()), HtmlUtils.htmlEscape(message.getText()));
 
         int newCounterValue = settingEntryService.incrementMessageCounter();
-        logger.info("Nachrichten ingesamt versendet: " + newCounterValue);
+        logger.info("Nachrichten insgesamt versendet: " + newCounterValue);
 
         messageService.saveNewMessage(escapedMessage);
 
         return escapedMessage;
+    }
+
+    @RequestMapping(
+            value = "/messages/all",
+            method = RequestMethod.GET,
+            produces = "application/json"
+    )
+    public @ResponseBody List<Message> getAllMessages() {
+        return messageService.getAllMessages();
     }
 }

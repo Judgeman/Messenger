@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Messenger</title>
-    <script src="/javascript/jquery-3.6.0.slim.min.js"></script>
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
     <script src="/javascript/sockjs-1.4.0.min.js"></script>
     <script src="/javascript/stomp-2.3.3.min.js"></script>
     <script src="/javascript/messenger.js"></script>
@@ -39,10 +39,11 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+            <button id="loadAll" class="btn btn-default" type="submit">Alte Nachrichten laden</button>
             <table id="conversation" class="table table-striped">
                 <thead>
                 <tr>
-                    <th>Nachrichten</th>
+                    <th colspan="2">Nachrichten</th>
                 </tr>
                 </thead>
                 <tbody id="messages">
