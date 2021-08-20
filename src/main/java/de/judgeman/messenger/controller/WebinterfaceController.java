@@ -24,4 +24,9 @@ public class WebinterfaceController {
     public String onlineClient(Model model) {
         return "onlineClient";
     }
+
+    @GetMapping("/registration")
+    public String registration(Model model) {
+        return "registration";
+    }
 }

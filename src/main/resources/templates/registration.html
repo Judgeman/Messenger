@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <style type="text/css"><!-- @import"/css/style.css"; --></style>
+
+    <script src="/javascript/jquery-3.6.0.min.js"></script>
+    <script src="/javascript/registration.js"></script>
+</head>
+<body>
+<noscript><div class="noScript">
+    <h3> Seems your browser doesn't support Javascript!
+        Websocket relies on Javascript being enabled. Please enable
+        Javascript and reload this page!
+    </h3></div></noscript>
+
+<div id="main-content" class="container">
+    <div class="registrationBox">
+
+        <!-- New user formular und send Button -->
+        <div class="newUser">
+            <form class="form">
+                <input type="text" id="newUserEmail" class="formInput" placeholder="Email-Adresse">
+                <input type="text" id="newUserName" class="formInput" placeholder="Name">
+                <input type="password" id="newUserPassword" class="formInput" placeholder="Passwort">
+                <button type="submit" id="createNewUser" class="sendBtn">Neuen Benutzer anlegen</button><br>
+            </form>
+            <div id="newUserServerResponse"></div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
