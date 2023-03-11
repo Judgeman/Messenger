@@ -18,9 +18,10 @@ function connect() {
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.subscribe('/messages/receive', function (message) {
+        var sender = $("#sender").val();
+        stompClient.subscribe('/messages/receive/' + sender, function (message) {
             var message = JSON.parse(message.body);
-            addNewMessage(message.name, message.text);
+            addNewMessage(message.sender, message.text);
         });
     });
 }
@@ -38,7 +39,7 @@ function sendMessage() {
         $("#messages").append("<tr><td colspan='2'>Verbindung nicht aufgebaut!</td></tr>");
         return;
     }
-    stompClient.send("/app/messages", {}, JSON.stringify({'name': $("#name").val(), 'text': $("#message").val()}));
+    stompClient.send("/app/messages", {}, JSON.stringify({'sender': $("#sender").val(), 'receiver': $("#receiver").val(), 'text': $("#message").val()}));
 }
 
 function addNewMessage(name, message) {
@@ -55,7 +56,7 @@ function loadAllMessages() {
         $("#messages").html("");
 
         for (const message of messages) {
-            addNewMessage(message.name, message.text);
+            addNewMessage(message.sender, message.text);
         }
     });
 }

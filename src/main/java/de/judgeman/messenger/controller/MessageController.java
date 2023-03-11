@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
-import org.springframework.messaging.handler.annotation.SendTo;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.HtmlUtils;
@@ -23,23 +23,30 @@ public class MessageController {
     Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+    @Autowired
     private SettingEntryService settingEntryService;
 
     @Autowired
     private MessageService messageService;
 
     @MessageMapping("/messages")
-    @SendTo("/messages/receive")
-    public Message messageReceiving(Message message) throws Exception {
+    public void messageReceiving(Message message) throws Exception {
 
-        Message escapedMessage = new Message(HtmlUtils.htmlEscape(message.getName()), HtmlUtils.htmlEscape(message.getText()));
-
-        int newCounterValue = settingEntryService.incrementMessageCounter();
-        logger.info("Nachrichten insgesamt versendet: " + newCounterValue);
+        Message escapedMessage = new Message(HtmlUtils.htmlEscape(message.getSender()),
+                                             HtmlUtils.htmlEscape(message.getReceiver()),
+                                             HtmlUtils.htmlEscape(message.getText()));
 
         messageService.saveNewMessage(escapedMessage);
 
-        return escapedMessage;
+        simpMessagingTemplate.convertAndSend("/messages/receive/" + message.getReceiver(), message);
+        if (message.getReceiver() != null && !message.getReceiver().equals(message.getSender())) {
+            simpMessagingTemplate.convertAndSend("/messages/receive/" + message.getSender(), message);
+        }
+
+        int newCounterValue = settingEntryService.incrementMessageCounter();
+        logger.info("Nachrichten insgesamt versendet: " + newCounterValue);
     }
 
     @RequestMapping(

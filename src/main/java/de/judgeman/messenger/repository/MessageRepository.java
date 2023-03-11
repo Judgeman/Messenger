@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Paul Richter on Sat 24/07/2021
  */
-public interface MessageRepository extends CrudRepository<Message, Integer> {
+public interface MessageRepository extends CrudRepository<Message, Long> {
 
     List<Message> findAll();
 }

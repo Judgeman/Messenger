@@ -12,26 +12,44 @@ public class Message {
 
     @Id
     @GeneratedValue
-    private int id;
+    private long id;
 
-    private String name;
+    private String sender;
+    private String receiver;
     private String text;
 
     public Message() {
         // empty
     }
 
-    public Message(String name, String text) {
-        this.name = name;
+    public Message(String sender, String receiver, String text) {
+        this.sender = sender;
+        this.receiver = receiver;
         this.text = text;
     }
 
-    public String getName() {
-        return name;
+    public long getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getSender() {
+        return sender;
+    }
+
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
     }
 
     public String getText() {
