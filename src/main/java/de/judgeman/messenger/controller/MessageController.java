@@ -34,11 +34,7 @@ public class MessageController {
     @MessageMapping("/messages")
     public void messageReceiving(Message message) throws Exception {
 
-        Message escapedMessage = new Message(HtmlUtils.htmlEscape(message.getSender()),
-                                             HtmlUtils.htmlEscape(message.getReceiver()),
-                                             HtmlUtils.htmlEscape(message.getText()));
-
-        messageService.saveNewMessage(escapedMessage);
+        messageService.saveNewMessage(message);
 
         simpMessagingTemplate.convertAndSend("/messages/receive/" + message.getReceiver(), message);
         if (message.getReceiver() != null && !message.getReceiver().equals(message.getSender())) {
