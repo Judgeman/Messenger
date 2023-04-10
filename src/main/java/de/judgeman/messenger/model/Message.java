@@ -3,6 +3,7 @@ package de.judgeman.messenger.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import java.util.Date;
 
 /**
  * Created by Paul Richter on Mon 19/07/2021
@@ -17,6 +18,8 @@ public class Message {
     private String sender;
     private String receiver;
     private String text;
+
+    private Date date;
 
     public Message() {
         // empty
@@ -58,5 +61,13 @@ public class Message {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

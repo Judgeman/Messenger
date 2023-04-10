@@ -10,7 +10,6 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.HtmlUtils;
 
 import java.util.List;
 
@@ -34,6 +33,7 @@ public class MessageController {
     @MessageMapping("/messages")
     public void messageReceiving(Message message) throws Exception {
 
+        messageService.setCurrentDate(message);
         messageService.saveNewMessage(message);
 
         simpMessagingTemplate.convertAndSend("/messages/receive/" + message.getReceiver(), message);
@@ -42,7 +42,7 @@ public class MessageController {
         }
 
         int newCounterValue = settingEntryService.incrementMessageCounter();
-        logger.info("Nachrichten insgesamt versendet: " + newCounterValue);
+        logger.info("Messages sent: " + newCounterValue);
     }
 
     @RequestMapping(

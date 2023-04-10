@@ -5,6 +5,7 @@ import de.judgeman.messenger.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -22,5 +23,13 @@ public class MessageService {
 
     public List<Message> getAllMessages() {
         return messageRepository.findAll();
+    }
+
+    public List<Message> getNewestMessages() {
+        return messageRepository.findTop10ByOrderByIdDesc();
+    }
+
+    public void setCurrentDate(Message message) {
+        message.setDate(new Date());
     }
 }
